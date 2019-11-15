@@ -14,7 +14,7 @@ dependencies:
 - base >= 4.7 && < 5
 
 executables:
-  handwritten-dfa:
+  {{name}}:
     main:                Main.hs
     source-dirs:         src
     ghc-options:
