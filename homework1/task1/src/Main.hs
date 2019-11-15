@@ -8,6 +8,17 @@ toDigitsRev num
 toDigits :: Integer -> [Integer]
 toDigits = reverse . toDigitsRev
 
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther = reverse . double . reverse
+  where double [] = []
+        double [x] = [x]
+        double [x, y] = [x, y * 2]
+        double (x:y:xs) = x : (y * 2) : double xs
+
 main :: IO ()
 main = do
-  putStrLn $ show $ toDigitsRev 1234567890
+  putStrLn $ show $ toDigits 12341234
+  putStrLn $ show $ (doubleEveryOther . toDigits) 12341234
+
+  putStrLn $ show $ toDigits 1234123
+  putStrLn $ show $ (doubleEveryOther . toDigits) 1234123
