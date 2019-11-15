@@ -18,12 +18,17 @@ doubleEveryOther = reverse . double . reverse
 sumDigits :: [Integer] -> Integer
 sumDigits = sum . concatMap toDigits
 
+validate :: Integer -> Bool
+validate = (== 0) . (`mod` 10) . sumDigits . doubleEveryOther . toDigits
+
 main :: IO ()
 main = do
-  putStrLn $ show $ toDigits 12341234
-  putStrLn $ show $ (doubleEveryOther . toDigits) 12341234
+  putStrLn $ "validate 4012888888881881 = " ++ (show $ validate 4012888888881881)
+  print $ toDigits 4012888888881881
+  print $ (doubleEveryOther . toDigits) 4012888888881881
+  print $ (sumDigits . doubleEveryOther . toDigits) 4012888888881881
 
-  putStrLn $ show $ toDigits 1234123
-  putStrLn $ show $ (doubleEveryOther . toDigits) 1234123
-
-  putStrLn $ show $ sumDigits [16, 7, 12, 5]
+  putStrLn $ "validate 4012888888881882 = " ++ (show $ validate 4012888888881882)
+  print $ toDigits 4012888888881882
+  print $ (doubleEveryOther . toDigits) 4012888888881882
+  print $ (sumDigits . doubleEveryOther . toDigits) 4012888888881882
