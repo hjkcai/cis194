@@ -15,6 +15,9 @@ doubleEveryOther = reverse . double . reverse
         double [x, y] = [x, y * 2]
         double (x:y:xs) = x : (y * 2) : double xs
 
+sumDigits :: [Integer] -> Integer
+sumDigits = sum . concatMap toDigits
+
 main :: IO ()
 main = do
   putStrLn $ show $ toDigits 12341234
@@ -22,3 +25,5 @@ main = do
 
   putStrLn $ show $ toDigits 1234123
   putStrLn $ show $ (doubleEveryOther . toDigits) 1234123
+
+  putStrLn $ show $ sumDigits [16, 7, 12, 5]
