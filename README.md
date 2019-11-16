@@ -1,3 +1,3 @@
-# PLP4e
+# cis194
 
-These are exercises from PLP4e
+These are exercises from cis194
