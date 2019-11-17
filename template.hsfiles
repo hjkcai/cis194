@@ -1,7 +1,7 @@
 {-# START_FILE package.yaml #-}
 name:                {{name}}
 version:             0.1.0.0
-github:              hjkcai/PLP4e
+github:              hjkcai/cis194
 license:             MIT
 author:              hjkcai
 maintainer:          huajingkun1214@gmail.com

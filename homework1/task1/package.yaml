@@ -1,13 +1,10 @@
 name:                task1
 version:             0.1.0.0
-github:              hjkcai/PLP4e
+github:              hjkcai/cis194
 license:             MIT
 author:              hjkcai
 maintainer:          huajingkun1214@gmail.com
 copyright:           2019 Jingkun Hua
-
-extra-source-files:
-- README.md
 
 dependencies:
 - base >= 4.7 && < 5
