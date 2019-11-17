@@ -13,3 +13,12 @@ parseMessage msg = parseMessageWords $ words msg
 
 parse :: String -> [LogMessage]
 parse = map parseMessage . lines
+
+-- Exercise 2
+insert :: LogMessage -> MessageTree -> MessageTree
+insert (Unknown _) tree = tree
+insert message Leaf     = Node Leaf message Leaf
+insert message@(LogMessage _ timestamp _) (Node left nodeMessage@(LogMessage _ nodeTimestamp _) right)
+  | timestamp < nodeTimestamp = Node (insert message left) nodeMessage right
+  | otherwise                 = Node left nodeMessage (insert message right)
+insert _ _ = undefined
