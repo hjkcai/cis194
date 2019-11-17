@@ -26,3 +26,16 @@ insert _ _ = undefined
 -- Exercise 3
 build :: [LogMessage] -> MessageTree
 build = foldr insert Leaf
+
+-- Exercise 4
+inOrder :: MessageTree -> [LogMessage]
+inOrder Leaf = []
+inOrder (Node left message right) = inOrder left ++ [message] ++ inOrder right
+
+-- Exercise 5
+whatWentWrong :: [LogMessage] -> [String]
+whatWentWrong = map (\(LogMessage _ _ msg) -> msg) . filter isWrong . inOrder . build
+  where isWrong (LogMessage (Error severity) _ _)
+          | severity >= 50 = True
+          | otherwise      = False
+        isWrong _ = False
