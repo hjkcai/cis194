@@ -22,3 +22,7 @@ insert message@(LogMessage _ timestamp _) (Node left nodeMessage@(LogMessage _ n
   | timestamp < nodeTimestamp = Node (insert message left) nodeMessage right
   | otherwise                 = Node left nodeMessage (insert message right)
 insert _ _ = undefined
+
+-- Exercise 3
+build :: [LogMessage] -> MessageTree
+build = foldr insert Leaf
