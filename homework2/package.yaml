@@ -11,7 +11,7 @@ dependencies:
 
 executables:
   log-parser:
-    main:                LogAnalysis.hs
+    main:                Main.hs
     source-dirs:         src
     ghc-options:
     - -threaded
