@@ -1,5 +1,4 @@
-{-# START_FILE package.yaml #-}
-name:                {{name}}
+name:                log-analysis
 version:             0.1.0.0
 github:              hjkcai/cis194
 license:             MIT
@@ -11,17 +10,10 @@ dependencies:
 - base >= 4.7 && < 5
 
 executables:
-  {{name}}:
+  log-parser:
     main:                Main.hs
     source-dirs:         src
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-
-{-# START_FILE src/Main.hs #-}
-module Main where
-
-main :: IO ()
-main = do
-  putStrLn "hello world"
