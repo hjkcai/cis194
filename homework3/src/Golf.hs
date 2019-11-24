@@ -32,3 +32,23 @@ toLocalMaximun [a,b,c]
   | b > a && b > c = [b]
   | otherwise      = []
 toLocalMaximun _   = []
+
+-- Exercise 3
+-- It is too hard for me to express my idea in English
+-- God bless me
+histogram :: [Integer] -> String
+histogram xs = unlines $ reverse $ [['0'..'9'], "=========="] ++ stars xs
+
+stars :: [Integer] -> [String]
+stars xs = map (map toStar) $ takeWhile (not . all (<=0)) $ iterate (map (subtract 1)) $ countNumbers xs
+
+toStar :: Integer -> Char
+toStar n
+  | n > 0     = '*'
+  | otherwise = ' '
+
+countNumber :: Integer -> [Integer] -> Integer
+countNumber n = toInteger . length . filter (==n)
+
+countNumbers :: [Integer] -> [Integer]
+countNumbers xs = zipWith countNumber [0..9] (replicate 10 xs)
