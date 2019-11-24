@@ -15,3 +15,20 @@ skip xs n = concat $ takeWhile (not.null) $ map (takeAt xs) [n, 2*n..]
 
 takeAt :: [a] -> Int -> [a]
 takeAt xs n = take 1 $ drop (n - 1) xs
+
+-- Exercise 2
+-- The idea of `localMaxima` is:
+-- 1. Group every 3 elements of the input. e.g. [a, b, c, d] -> [[a, b, c], [b, c, d]]
+-- 2. Map each group to their second element if it is the local maximun
+-- 3. Concatenate the resulting list
+localMaxima :: [Integer] -> [Integer]
+localMaxima xs = concatMap toLocalMaximun $ groupBy3 xs
+
+groupBy3 :: [a] -> [[a]]
+groupBy3 xs = map (take 3 . (`drop` xs)) [0..length xs - 1]
+
+toLocalMaximun :: Ord t => [t] -> [t]
+toLocalMaximun [a,b,c]
+  | b > a && b > c = [b]
+  | otherwise      = []
+toLocalMaximun _   = []
