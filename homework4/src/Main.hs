@@ -49,5 +49,14 @@ map' f = foldr g ([] :: [b])
 myFoldl :: (b -> a -> b) -> b -> [a] -> b
 myFoldl f z = foldr (flip f) z . reverse
 
+-- Exercise 4
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = 2 : map ((+1) . (*2)) (filter (`notElem` sieves) [1..n])
+  where sieves = map (uncurry f) $ filter (uncurry (<=)) $ cartProd [1..n] [1..n]
+        f i j  = i + j + 2 * i * j
+
+cartProd :: [a] -> [b] -> [(a,b)]
+cartProd xs ys = [(x,y) | x <- xs, y <- ys]
+
 main :: IO ()
 main = return ()
