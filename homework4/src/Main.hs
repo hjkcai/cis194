@@ -36,5 +36,18 @@ data Tree a = Leaf
 foldTree :: Ord a => [a] -> Tree a
 foldTree _ = Leaf   -- Let's skip this exercise for now
 
+-- Exercise 3
+xor :: [Bool] -> Bool
+xor = foldr f False
+  where f x False = x
+        f x True = not x
+
+map' :: (a -> b) -> [a] -> [b]
+map' f = foldr g ([] :: [b])
+  where g a l = f a : l
+
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl f z = foldr (flip f) z . reverse
+
 main :: IO ()
 main = return ()
