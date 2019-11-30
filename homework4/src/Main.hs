@@ -25,5 +25,16 @@ specialSum = sum . filter even . takeWhile (/=0) . iterate it
           | even n    = n `div` 2
           | otherwise = 3 * n + 1
 
+-- Exercise 2
+data Tree a = Leaf
+            | Node {- height -} Integer
+                     {- left -} (Tree a)
+                    {- value -} a
+                    {- right -} (Tree a)
+            deriving (Show, Eq)
+
+foldTree :: Ord a => [a] -> Tree a
+foldTree _ = Leaf   -- Let's skip this exercise for now
+
 main :: IO ()
 main = return ()
